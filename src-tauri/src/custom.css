@@ -1,0 +1,588 @@
+/* ==========================================================================
+   WhatsApp R36S - 640x480 (Tema Dark)
+   ========================================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box !important;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI Emoji", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
+    user-select: none;
+    animation: none !important;
+    transition: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+}
+* {
+    box-shadow: none !important;
+}
+/* Permitir outline e bordas focadas */
+.r36s-msg.focused-msg, .r36s-kb-key.focused, .r36s-chat-item.focused {
+    box-shadow: none !important;
+}
+
+html, body {
+    width: 640px !important;
+    height: 480px !important;
+    max-width: 640px !important;
+    max-height: 480px !important;
+    background-color: #0b141a !important;
+    overflow: hidden !important;
+}
+
+#app {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 640px !important;
+    height: 480px !important;
+    opacity: 0.001 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+body.r36s-show-qr #app {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 2147483645 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #f0f2f5 !important;
+}
+body.r36s-show-qr #app > div {
+    transform: scale(0.85);
+    transform-origin: center;
+}
+#r36s-qr-help {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #202c33;
+    color: #e9edef;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    z-index: 2147483646;
+    text-align: center;
+    border: 1px solid #00a884;
+    max-width: 500px;
+}
+
+/* Splash Screen Inicial */
+#r36s-splash {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 640px !important;
+    height: 480px !important;
+    background-color: #0b141a !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    z-index: 2147483646 !important;
+    color: #e9edef !important;
+}
+
+.r36s-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #202c33;
+    border-top: 3px solid #00a884;
+    border-radius: 50%;
+}
+
+/* Container do App R36S */
+#r36s-app {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 640px !important;
+    height: 480px !important;
+    background-color: #111b21 !important;
+    color: #e9edef !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 2147483647 !important;
+}
+
+/* Cabeçalho */
+.r36s-header {
+    height: 42px;
+    background-color: #202c33;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid #222e35;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.r36s-header h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e9edef;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.r36s-header .brand {
+    color: #00a884;
+}
+
+.r36s-back-btn {
+    background: #111b21;
+    border: 1px solid #00a884;
+    color: #00a884;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.r36s-back-btn:active {
+    background-color: #00a884;
+    color: #0b141a;
+}
+
+/* Lista de Conversas */
+#r36s-chat-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.r36s-chat-item {
+    height: 56px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 1px solid #1c272d;
+    cursor: pointer;
+    gap: 12px;
+}
+
+.r36s-chat-item:hover, 
+.r36s-chat-item.focused {
+    background-color: #202c33 !important;
+    border-left: 4px solid #00a884;
+}
+
+.r36s-avatar-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #53646f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.r36s-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.r36s-avatar-initial {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.r36s-chat-info {
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.r36s-chat-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.r36s-chat-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e9edef;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.r36s-chat-time {
+    font-size: 11px;
+    color: #8696a0;
+    flex-shrink: 0;
+    margin-left: 6px;
+}
+
+.r36s-chat-preview {
+    font-size: 12px;
+    color: #8696a0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Área de Mensagens */
+#r36s-messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 6px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: #0b141a;
+}
+
+/* Divisores de Data */
+.r36s-date-divider {
+    display: flex;
+    justify-content: center;
+    margin: 6px 0;
+}
+
+.r36s-date-divider span {
+    background-color: #182229;
+    color: #8696a0;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid #222e35;
+}
+
+/* Balões de Mensagens - afinados */
+.r36s-msg {
+    max-width: 82%;
+    padding: 4px 8px;
+    border-radius: 7px;
+    font-size: 13px;
+    line-height: 16px;
+    word-break: break-word;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.r36s-msg.focused-msg {
+    border-color: #00a884 !important;
+    background-color: #1a3830 !important;
+}
+
+.r36s-msg.in {
+    background-color: #202c33;
+    align-self: flex-start;
+    border-top-left-radius: 0;
+}
+
+.r36s-msg.out {
+    background-color: #005c4b;
+    align-self: flex-end;
+    border-top-right-radius: 0;
+}
+
+.r36s-msg-sender {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.r36s-msg a {
+    color: #53bdeb;
+    text-decoration: underline;
+}
+
+.r36s-msg-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.r36s-msg-time {
+    font-size: 10px;
+    color: rgba(233, 237, 239, 0.6);
+}
+
+/* Ticks Oficiais em Vetor SVG */
+.r36s-tick-svg {
+    width: 14px;
+    height: 10px;
+    display: inline-block;
+    fill: #8696a0;
+}
+
+.r36s-tick-svg.read {
+    fill: #53bdeb !important;
+}
+
+/* Pílula de Chamadas */
+.r36s-call-pill {
+    align-self: center;
+    background-color: #182229;
+    border: 1px solid #222e35;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: #8696a0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 2px 0;
+}
+
+/* Mídias Reais */
+.r36s-sticker-img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    border-radius: 6px;
+    margin: 2px 0;
+    display: block;
+    background: #182229;
+}
+
+.r36s-media-img {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: 6px;
+    margin-top: 4px;
+    object-fit: cover;
+    display: block;
+}
+
+.r36s-audio-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+/* Barra de Digitação */
+.r36s-input-bar {
+    height: 44px;
+    background-color: #202c33;
+    display: flex;
+    align-items: center;
+    padding: 3px 8px;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.r36s-input-bar textarea,
+.r36s-input-bar input {
+    flex-grow: 1;
+    min-height: 34px;
+    max-height: 48px;
+    background-color: #2a3942;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 10px;
+    color: #e9edef;
+    outline: none;
+    font-size: 13px;
+    user-select: text;
+    resize: none;
+    line-height: 16px;
+    overflow-y: auto;
+}
+
+.r36s-kb-toggle-btn {
+    background-color: #2a3942;
+    border: 1px solid #3b4a54;
+    color: #e9edef;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.r36s-send-btn {
+    width: 34px;
+    height: 34px;
+    background-color: #00a884;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Teclado Virtual - Centralizado para R36S */
+#r36s-keyboard-area {
+    display: none;
+    width: 640px;
+    background-color: #111b21;
+    border-top: 2px solid #00a884;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 0;
+}
+
+#r36s-keyboard-area[style*="flex"] {
+    display: flex !important;
+}
+
+#r36s-virtual-keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 580px;
+    max-width: 580px;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.r36s-kb-row {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    width: 100%;
+}
+
+.r36s-kb-key {
+    background-color: #202c33;
+    color: #e9edef;
+    border: 1px solid #2a3942;
+    border-radius: 6px;
+    height: 36px;
+    flex: 1 1 0;
+    min-width: 32px;
+    max-width: 52px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 0 2px;
+}
+
+.r36s-kb-key.focused {
+    background-color: #00a884 !important;
+    color: #0b141a !important;
+    border-color: #ffffff !important;
+    outline: 2px solid #ffffff !important;
+}
+
+.r36s-kb-key.tab-btn {
+    background-color: #182229;
+    border-color: #00a884;
+    color: #00a884;
+    font-size: 11px;
+    flex: 1.2 1 0;
+    max-width: 78px;
+}
+
+.r36s-kb-key.space-btn {
+    flex: 2.5 1 0;
+    max-width: 140px;
+}
+
+/* Barra de Legendas (HUD de Controle) */
+.r36s-hud-bar {
+    height: 22px;
+    background-color: #0b141a;
+    border-top: 1px solid #1c272d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    font-size: 10px;
+    color: #8696a0;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.r36s-hud-badge {
+    color: #00a884;
+    font-weight: bold;
+}
+
+.r36s-hud-toggle {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Modal */
+.r36s-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 480px;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+.r36s-modal-card {
+    background: #202c33;
+    border: 1px solid #00a884;
+    border-radius: 8px;
+    padding: 16px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.r36s-modal-card h3 {
+    color: #e9edef;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 6px;
+}
+.r36s-modal-btn {
+    background: #2a3942;
+    border: 1px solid #3b4a54;
+    color: #e9edef;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+}
+.r36s-modal-btn.focused {
+    background: #00a884 !important;
+    color: #0b141a !important;
+    border-color: #fff !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
